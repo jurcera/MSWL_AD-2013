@@ -7,6 +7,8 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="10" />
+    
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -21,6 +23,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.urcera.android.Ej2Actividad1"
+            android:label="@string/titulo" >
+        </activity>
+        <activity
+            android:name="com.urcera.android.Ej2Actividad2"
+            android:label="@string/titulo" >
+        </activity>
+        <activity
+            android:name="com.urcera.android.Ej2Actividad3"
+            android:label="@string/titulo" >
         </activity>
     </application>
 

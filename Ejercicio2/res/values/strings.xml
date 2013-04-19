@@ -3,6 +3,15 @@
 
     <string name="app_name">Ejercicio2</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="titulo">ACTIVIDADES</string>
+    <string name="boton1_txt">Actividad1</string>
+    <string name="boton2_txt">Actividad2-Result</string>
+    <string name="boton3_txt">Actividad3-Result</string>
+    <string name="boton4_txt">Llamada Tlf.</string>
+    <string name="boton5_txt">Web</string>
+    <string name="boton6_txt">Imagen</string>
+    <string name="titulo_act1">ACTIVITY1</string>
+    <string name="titulo_act2">ACTIVITY2</string>
+    <string name="titulo_act3">ACTIVITY3</string>
 
 </resources>

@@ -1,16 +1,64 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Ej2MainActivity" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="#b0b0ff"
+    tools:context=".MainActivity" >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-</RelativeLayout>
+        android:layout_marginTop="10dip"
+		android:layout_marginBottom="10dip"
+        android:text="@string/titulo"
+        android:textColor="#0000ff"
+        android:layout_gravity="center"/>
+    
+    <Button
+        android:id="@+id/boton1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton1_txt"
+        android:textColor="#ff0000"
+        android:layout_gravity="center"/>
+    
+    <Button
+        android:id="@+id/boton2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton2_txt"
+        android:textColor="#00ff00"
+        android:layout_gravity="center"/>
+        
+    <Button
+        android:id="@+id/boton3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton3_txt"
+        android:textColor="#00ff00"
+        android:layout_gravity="center"/>
+    
+ 	<Button
+        android:id="@+id/boton4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton4_txt"
+        android:layout_gravity="center"/>
+ 	
+  	<Button
+        android:id="@+id/boton5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton5_txt"
+        android:layout_gravity="center"/>
+  
+    <Button
+        android:id="@+id/boton6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton6_txt"
+        android:textColor="#0000ff"
+        android:layout_gravity="center"/>
+ 	
+</LinearLayout>
