@@ -45,9 +45,9 @@ public class Ej3MainActivity extends ListActivity {
 	}
 	
 	
-	private void setData ()  // Carga el array a mano
+	private void setData ()  			// Carga los datos en el Array
     {
-        mArray.clear();  // Limpia el array
+        mArray.clear();  				// Limpia el array
 
         Node mynode = new Node();
         Node mynode2 = new Node();
@@ -89,25 +89,25 @@ public class Ej3MainActivity extends ListActivity {
 	
 	public static class MyAdapter extends BaseAdapter 
 	{
-        private Context mContext;  //Le pasamos el contexto a la clase
+        private Context mContext;  	// Para pasarle el contexto a la clase
 		
-		public MyAdapter (Context context){
+		public MyAdapter (Context context){		// Para recibir el contexto
 			mContext = context;
 		}
 
 		@Override
-		public int getCount() {
+		public int getCount() {					// Devuelve el número de elementos a visualizar
 			return mArray.size() + (int) (mArray.size()/(IDXPUBLI-1));
 		}
 
 		
 		@Override
-		public Object getItem(int position) {
+		public Object getItem(int position) {	// Devuelve el elemen
 			return mArray.get(position);
 		}
 
 		@Override
-		public long getItemId(int position) {  // Para añadir un id a cada elemento de Node
+		public long getItemId(int position) {  // Para añadir un id a cada objeto Node
 			// TODO Auto-generated method stub
 			return 0;
 		}
@@ -117,36 +117,41 @@ public class Ej3MainActivity extends ListActivity {
 			
 			View view;
 			
-			if ((position+1)%IDXPUBLI == 0) {
+			if ((position+1)%IDXPUBLI == 0) {   // Si hemos llegado a IDXPUBLI ponemos una publicidad.
 				
+				// Indico el layout a usar para presentar la publicidad
 				LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
 				view = inflater.inflate(R.layout.publicidad, null);
 				
+				// Sobreescribo el textview
 				TextView tvTitle = (TextView) view.findViewById(R.id.tvPubli);
 				tvTitle.setText("¡Publicidad!");
 										
 			} else {
 				
+				// Calculo la posición del array a mostrar teniendo en cuenta donde está la publicidad
 					
-				position = position - (int) ((position+1)/IDXPUBLI);
+				position = position - (int) ((position+1)/IDXPUBLI);  
 
+				// Indico el layout a usar para presentar los datos
 				LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
 				view = inflater.inflate(R.layout.lista, null);
 				
+				// Obtengo el título del array
 				TextView tvTitle = (TextView) view.findViewById(R.id.title);
 				tvTitle.setText(mArray.get(position).mTitle);
 					
+				// Obtengo la descripción del array
 				TextView tvDescription = (TextView) view.findViewById(R.id.description);
 				tvDescription.setText(mArray.get(position).mDescription);
 				
+				// Obtengo la imagen de res/drawable
 				ImageView img = (ImageView) view.findViewById(R.id.image);
 				img.setImageDrawable(mContext.getResources().getDrawable(mArray.get(position).mImageResource));
 
 			}
-				
-			
-			return view;
-	
+
+			return view;			// Devuelve la vista del elemento correspondiente.
 		}
 
 	}
@@ -157,13 +162,15 @@ public class Ej3MainActivity extends ListActivity {
     	// Create a new intent to call other Activity. 
     	// Using the methods "putExtra" we can
     	// send data to the new activity
+    	
+    	// Al pulsar un elemento de la lista muestra un toast
     	   	
-    	if ((position+1)%IDXPUBLI == 0) {
+    	if ((position+1)%IDXPUBLI == 0) {							// Para publicidad
     		Toast.makeText(this, "Posición: " + String.valueOf(position), Toast.LENGTH_SHORT).show();
     		
     	} else {
     		
-    		position = position - (int) ((position+1)/IDXPUBLI);
+    		position = position - (int) ((position+1)/IDXPUBLI);	// Para datos normales
     		Toast.makeText(this, mArray.get(position).mTitle, Toast.LENGTH_SHORT).show();
     	}
     	
