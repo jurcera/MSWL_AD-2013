@@ -83,6 +83,7 @@ public class Ej3MainActivity extends ListActivity {
         mArray.add(mynode4);
         
         mArray.addAll(mArray);       // Duplica el array para tener más datos a mostrar.
+        mArray.addAll(mArray);       // Vuelvo a duplicar el array para tener más datos a mostrar.
    
     }
 	
