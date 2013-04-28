@@ -13,5 +13,6 @@
 	<string name="description3">The chipKIT development platform is an open-source hardware and software solution intended for beginners and users with little or no knowledge of embedded controllers wanting to explore embedded applications.</string>
 	<string name="title4">mbed</string>
 	<string name="description4">The mbed rapid prototyping platform is the fastest way to design products based on ARM microcontrollers. The project is being developed by ARM, its Partners and the contributions of the global mbed Developer Community.</string>
-	
+	<string name="title5">AndroidStamp</string>
+	<string name="description5">AndroidStamp es un plataforma abierta basada en un procesador ARM9 diseñada para su fácil uso y reproducción; se utilizaron herramientas abiertas para su diseño lo que permite realizar modificaciones de forma económica, el uso de la cadena de herramientas \'GNU\' y el sistema operativo Linux para su programación reduce a cero los costos en herramientas de desarrollo.</string>
 </resources>

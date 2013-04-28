@@ -53,6 +53,7 @@ public class Ej3MainActivity extends ListActivity {
         Node mynode2 = new Node();
         Node mynode3 = new Node();
         Node mynode4 = new Node();
+        Node mynode5 = new Node();
         
         // Element 1 
         mynode.mTitle = this.getResources().getString(R.string.title1);
@@ -81,6 +82,14 @@ public class Ej3MainActivity extends ListActivity {
         mynode4.mImageResource = R.drawable.img4;
 
         mArray.add(mynode4);
+        
+        // Element 5
+        mynode5.mTitle = this.getResources().getString(R.string.title5
+        	);
+        mynode5.mDescription = this.getResources().getString(R.string.description5);
+        mynode5.mImageResource = R.drawable.img5;
+
+        mArray.add(mynode5);
         
         mArray.addAll(mArray);       // Duplica el array para tener más datos a mostrar.
         mArray.addAll(mArray);       // Vuelvo a duplicar el array para tener más datos a mostrar.
