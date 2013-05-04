@@ -82,48 +82,48 @@ public class Ej4MainActivity extends ListActivity {
 
 	        mArray.add(mynode2);
 
-	        // Element 3
+	        // Element 3 (chipKIT)
 	        mynode3.mTitle = this.getResources().getString(R.string.title3);
 	        mynode3.mDescription = this.getResources().getString(R.string.description3);
 	        mynode3.mImageResource = R.drawable.img3;
-	        mynode3.mLatitude = 45.466667;
-	        mynode3.mLongitude = 7.866667;
+	        mynode3.mLatitude = 46.733333;	// Pullman, Washington
+	        mynode3.mLongitude = -117.166667;
 
 	        mArray.add(mynode3);
 	        
-	        // Element 4
+	        // Element 4 (mbed)
 	        mynode4.mTitle = this.getResources().getString(R.string.title4);
 	        mynode4.mDescription = this.getResources().getString(R.string.description4);
 	        mynode4.mImageResource = R.drawable.img4;
-	        mynode4.mLatitude = 45.466667;
-	        mynode4.mLongitude = 7.866667;
+	        mynode4.mLatitude = 52.205;		// Cambridge
+	        mynode4.mLongitude = 0.119;
 
 	        mArray.add(mynode4);
 	        
-	        // Element 5
+	        // Element 5 (AndroidStamp)
 	        mynode5.mTitle = this.getResources().getString(R.string.title5);
 	        mynode5.mDescription = this.getResources().getString(R.string.description5);
 	        mynode5.mImageResource = R.drawable.img5;
-	        mynode5.mLatitude = 45.466667;
-	        mynode5.mLongitude = 7.866667;
+	        mynode5.mLatitude = 4.638219;	// Universidad Nacional de Colombia
+	        mynode5.mLongitude = -74.084347;
 
 	        mArray.add(mynode5);
 	        
-	        // Element 6
+	        // Element 6 (BeagleBone)
 	        mynode6.mTitle = this.getResources().getString(R.string.title6);
 	        mynode6.mDescription = this.getResources().getString(R.string.description6);
 	        mynode6.mImageResource = R.drawable.img6;
-	        mynode6.mLatitude = 45.466667;
-	        mynode6.mLongitude = 7.866667;
+	        mynode6.mLatitude = 29.762778;	// Houston
+	        mynode6.mLongitude = -95.383056;
 
 	        mArray.add(mynode6);
 	        
-	        // Element 7
+	        // Element 7 (UDOO)
 	        mynode7.mTitle = this.getResources().getString(R.string.title7);
 	        mynode7.mDescription = this.getResources().getString(R.string.description7);
 	        mynode7.mImageResource = R.drawable.img7;
-	        mynode7.mLatitude = 45.466667;
-	        mynode7.mLongitude = 7.866667;
+	        mynode7.mLatitude = 42.358056;	// Boston
+	        mynode7.mLongitude = -71.063611;
 
 	        mArray.add(mynode7);
 	        

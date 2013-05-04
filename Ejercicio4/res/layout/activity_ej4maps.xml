@@ -9,22 +9,15 @@
     tools:context=".Ej4maps" >
 
     <TextView
-        android:id="@+id/tvLat"
-        android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:text="@string/hello_world" />
-	
-	<TextView
-        android:id="@+id/tvLon"
-        android:layout_width="fill_parent"
-        android:layout_below="@id/tvLat"
+        android:id="@+id/tvLoc"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="@string/hello_world" />
     
     <com.google.android.maps.MapView
         android:id="@+id/MapView"
         android:apiKey="@string/map_key"
-        android:layout_below="@id/tvLon"
+        android:layout_below="@id/tvLoc"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent" />
    

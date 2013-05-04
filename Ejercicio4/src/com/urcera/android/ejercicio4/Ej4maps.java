@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
@@ -18,8 +19,7 @@ public class Ej4maps extends MapActivity {
 	private MapView mapview = null;				// Inicializar la vista del mapa
 	private MapController mapControl = null;	// Inicializar el controlador de mapas
 //	private Location mLoc = null;
-	private TextView tvLatitude = null;
-	private TextView tvLongitude = null;
+	private TextView tvLocation = null;
 	private String mTitulo = null;
 	private String mLatitud = null;
 	private String mLongitud = null;
@@ -31,10 +31,10 @@ public class Ej4maps extends MapActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ej4maps);
 		
-		tvLatitude = (TextView) this.findViewById(R.id.tvLat);
-		tvLongitude = (TextView) this.findViewById(R.id.tvLon);
+		tvLocation = (TextView) this.findViewById(R.id.tvLoc);
 		mapview = (MapView) findViewById(R.id.MapView);
 		
+		// Recupero los datos pasados por el intent
 		
 		Intent i = getIntent();		// Captura el intent que arrancó esta actividad
 		if (i != null)  			// Confirma si la actividad se arrancó a través de un intent
@@ -43,43 +43,42 @@ public class Ej4maps extends MapActivity {
 			mLatitud = i.getStringExtra(Ej4MainActivity.LAT); 	// Recoje el valor de la variable LAT pasado desde la MainActivity
 			mLongitud = i.getStringExtra(Ej4MainActivity.LON); 	// Recoje el valor de la variable LON pasado desde la MainActivity
 			mImagen = i.getStringExtra(Ej4MainActivity.IMG); 	// Recoje el valor de la variable LON pasado desde la MainActivity
-	
-			if (mTitulo != null)  	// Comprueba que mTitulo tiene valor
+
+			// Asigno valores por si falta alguno
+			
+			if (mTitulo == null)  	// Comprueba si mTitulo tiene valor
 			{
-				//tvLatitude.setText("Latitud: " + mLatitud);		// Escribe en el textView el valor de TITLE recibido de la MainActivity
-			} else {
 				mTitulo = "Sin título";
 			}
 			
-			if (mLatitud != null)  	// Comprueba que mLatitud tiene valor
+			if (mLatitud == null)  	// Comprueba si mLatitud tiene valor
 			{
-				tvLatitude.setText("Latitud: " + mLatitud);		// Escribe en el textView el valor de latitud recibido de la MainActivity
-			} else {
 				mLatitud = "0.0";
 			}
 			
-			if (mLongitud != null)  // Comprueba que mLongitud tiene valor
+			if (mLongitud == null)  // Comprueba si mLongitud tiene valor
 			{
-				tvLongitude.setText("Longitud: " + mLongitud);	// Escribe en el textView el valor de longitud recibido de la MainActivity
-			} else {
 				mLongitud = "0.0";
 			}
 			
-			if (mImagen != null)  // Comprueba que nImagen tiene valor
+			if (mImagen == null)  // Comprueba si nImagen tiene valor
 			{
-				// tvLongitude.setText("Longitud: " + mLongitud);	// Escribe en el textView el valor de longitud recibido de la MainActivity
-			} else {
 				mImagen = "0";
 			}
-			
-			
 		}
 		
-		//mLatitud = "0.0";
-		//mLongitud = "0.0";
+		// Imprimo textviews
 		
-		mapview.setBuiltInZoomControls(true); 	// mover mapa y poder hacer zoom
+		tvLocation.setText("Latitud: " + mLatitud + ", Longitud: " + mLongitud);	// Escribe en el textView el valor de longitud recibido de la MainActivity
+		
+		Log.d("Ej4maps", "Tit: " + mTitulo + " Longitud: " + mTitulo.length());
+		
+		
+		// Imprimo el mapa
+	
+		mapview.setBuiltInZoomControls(true); 	// mover poder hacer zoom
 		mapview.setClickable(true);				// para poder mover el mapa
+		//mapview.setSatellite(true);			// para ver vista de satélite
 		
 		mapControl = mapview.getController();	// para poder usar el controlador de mapas
 	
@@ -87,11 +86,13 @@ public class Ej4maps extends MapActivity {
 			(int) (Double.valueOf(mLatitud) * 1000000),		// Latitud 40.33483  (Norte-Sur)
 			(int) (Double.valueOf(mLongitud) * 1000000));	// Longitud -3.87397 (Este-Oeste)
 		
-		mapControl.setZoom(13);					// Hace un determinado zoom
+		mapControl.setZoom(14);					// Hace un determinado zoom
 		mapControl.animateTo(geoPoint);			// Mueve el mapa al punto indicado con geoPoint
 		
-		MapOverlay myMapOver = new MapOverlay();
-		myMapOver.setDrawable(getResources().getDrawable(Integer.valueOf(mImagen)));
+		// Imprimo el overlay
+		
+		MapOverlay myMapOver = new MapOverlay();	// Crea una capa de mapa
+		myMapOver.setDrawable(getResources().getDrawable(Integer.valueOf(mImagen)));	// 
 		myMapOver.setGeoPoint(geoPoint);
 		myMapOver.setTexto(mTitulo);
 
@@ -99,57 +100,8 @@ public class Ej4maps extends MapActivity {
 		overlays.clear();
 
 		overlays.add(myMapOver);
-		
-		
 	}
 	
-	/**************
-	private void refreshMap()
-    {
-    	
-    	if (mLoc == null)
-    	{
-    		Toast.makeText(getBaseContext(),
-                    "Location not available!",
-                    Toast.LENGTH_LONG).show();
-    		
-    		return;
-    	}
-    
-		
-        GeoPoint geoPoint = new GeoPoint ( (int) (Double.valueOf(mLatitud) * 1000000),
-				                           (int) (Double.valueOf(mLongitud) * 1000000));
-
-        
-        
-        mapControl.setZoom(18);
-		mapControl.animateTo(geoPoint);
-
-
-
-		MapOverlay myMapOver = new MapOverlay();
-		myMapOver.setDrawable(getResources().getDrawable(R.drawable.drawingpin));
-		myMapOver.setGeoPoint(geoPoint);
-
-		final List<Overlay> overlays = mapview.getOverlays();
-		overlays.clear();
-
-		overlays.add(myMapOver);
-
-
-		//mapview.setSatellite(true);
-		//mapview.setBuiltInZoomControls(true);
-
-
-		mapview.setClickable(true);
-    	
-
-		tvlocation.setText("Your Current Location: \n" + 
-				           String.valueOf(mLoc.getLatitude()) + " , " +
-				           String.valueOf(mLoc.getLongitude()));
-
-    	
-    } ************/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -157,6 +109,7 @@ public class Ej4maps extends MapActivity {
 		getMenuInflater().inflate(R.menu.ej4maps, menu);
 		return true;
 	}
+	
 
 	@Override
 	protected boolean isRouteDisplayed() {
