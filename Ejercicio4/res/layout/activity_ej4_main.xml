@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".Ej4MainActivity" >
+
+    <TextView
+        android:id="@+id/tvTexto"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:color="#000000"
+        android:background="#cccccc"
+        android:text="@string/cabecera"
+        android:gravity="center"
+        android:maxLines="1"/>
+    
+    <ListView android:id="@id/android:list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
