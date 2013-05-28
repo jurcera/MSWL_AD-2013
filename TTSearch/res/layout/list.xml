@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="#00f0ff">
+ 
+        <ListView android:id="@android:id/list"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:cacheColorHint="#00000000">
+        </ListView>
+ 
+        <TextView android:id="@id/android:empty"
+        android:background="@null"
+        android:text="@string/sin_datos"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent" />
+ 
+</LinearLayout>

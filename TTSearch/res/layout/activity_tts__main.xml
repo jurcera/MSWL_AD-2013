@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b0b0ff"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".TTS_MainActivity" >
+    
+    <ImageView 
+        android:id="@+id/imgBusqueda"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ttsearch"
+        android:contentDescription="@string/imgbuscar" />
+
+    <TextView
+        android:id="@+id/tvBusqueda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#0000ff"
+        android:textSize="18sp"
+        android:text="@string/tvbuscar" />
+    
+    <EditText 
+        android:id="@+id/edtBusqueda"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="10dp"
+    	android:background="#b0b0af"
+    	android:inputType="text"/>
+    
+    <Button 
+        android:id="@+id/butBusqueda"
+    	android:layout_width="wrap_content"
+    	android:layout_height="35dp"
+    	android:textSize="12sp"
+    	android:layout_marginTop="10dp"
+    	android:layout_gravity="center"
+    	android:text="@string/butbuscar"/>
+
+</LinearLayout>

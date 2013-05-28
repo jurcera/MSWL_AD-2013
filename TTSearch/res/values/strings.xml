@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TTSearch</string>
+    <string name="action_settings">Settings</string>
+    <string name="sin_datos">No hay datos disponibles</string>
+    <string name="tvbuscar">Introduce el término a buscar:</string>
+    <string name="butbuscar">Buscar &#8230;</string>
+    <string name="imgbuscar">Logo de la aplicación</string>
+    <string name="search_title">Url de búsqueda</string>
+    <string name="search_summary">Url de la API de búsqueda</string>
+    <string name="range_title">Distancia</string>
+    <string name="range_summary">Radio de búsqueda partiendo de nuestra posición actual</string>
+    <string name="units_title">Unidades</string>
+    <string name="units_summary">Unidades de medida de la distancia</string>
+    <string name="rpp_title">Resultados</string>
+    <string name="rpp_summary">Número de resultados por consulta (máx. 100)</string>
+    <string name="prefs_localizacion">Localización</string>
+    <string name="lat_title">Latitud</string>
+    <string name="lat_summary">Norte es positivo y Sur negativo. Usar punto decimal en lugar de coma</string>
+    <string name="lon_title">Longitud</string>
+    <string name="lon_summary">Este es positivo y Oeste negativo. Usar punto decimal en lugar de coma</string>
+    
+</resources>
