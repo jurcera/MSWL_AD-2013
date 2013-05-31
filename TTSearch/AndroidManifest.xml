@@ -18,6 +18,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <uses-library android:name="com.google.android.maps"/>
+        
         <activity
             android:name="com.urcera.android.ttsearch.TTS_MainActivity"
             android:label="@string/app_name" >
@@ -27,14 +30,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity 
-            android:name="com.urcera.android.ttsearch.Prefs" 
-            android:label="@string/app_name" >
-        </activity>
-        
         <activity
             android:name="com.urcera.android.ttsearch.TTS_ListActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+		<activity
+            android:name="com.urcera.android.ttsearch.TTS_MapActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.android.ttsearch.Prefs"
             android:label="@string/app_name" >
         </activity>
     </application>

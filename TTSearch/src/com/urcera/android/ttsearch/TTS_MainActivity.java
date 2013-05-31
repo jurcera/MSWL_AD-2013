@@ -2,6 +2,10 @@ package com.urcera.android.ttsearch;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,18 +15,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class TTS_MainActivity extends Activity {
+public class TTS_MainActivity extends Activity implements LocationListener {
 	
 	public static String DATA = "DATA_TO_SEARCH";
+	public static String LAT = "LATITUD";
+	public static String LON = "LONGITUD";
 	public String data = null;
-	
+	private LocationManager myLocMgr;
+	private String myProvider;
+	private String myLatitud;
+	private String myLongitud;
+		
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tts__main);
 		
 		final EditText edText = (EditText)findViewById(R.id.edtBusqueda);
 		
-		Button bt1 = (Button) this.findViewById(R.id.butBusqueda);	// Asignamos el botón butBusqueda a bt1
+		
+			myLocMgr = (LocationManager) getSystemService(LOCATION_SERVICE);
+			Criteria criteria = new Criteria();
+			myProvider = myLocMgr.getBestProvider(criteria, true);
+			Toast.makeText(getBaseContext(), "Proveedor de posición: " + myProvider, Toast.LENGTH_SHORT).show();
+		
+		
+			
+		
+        Button bt1 = (Button) this.findViewById(R.id.butBusqueda);	// Asignamos el botón butBusqueda a bt1
 		if (bt1 != null)										
 		{
 			bt1.setOnClickListener(new OnClickListener() { 			// Crea un listener para bt1 	
@@ -42,7 +61,9 @@ public class TTS_MainActivity extends Activity {
 						// Definimos donde estamos (getBaseContext()) y a donde vamos (TTS_ListActivity)
 						
 						Intent intent = new Intent(getBaseContext(), TTS_ListActivity.class);
-						intent.putExtra(DATA, data);
+						intent.putExtra(DATA, data);				// Pasa la query a la ListActivity
+						intent.putExtra(LAT, myLatitud);			// Pasa la latitud de la posición del móvil
+						intent.putExtra(LON, myLongitud);			// Pasa la longitud de la posición del móvil
 						startActivity(intent);						// ... arranca la actividad TTS_ListActivity.
 						
 					}
@@ -52,8 +73,56 @@ public class TTS_MainActivity extends Activity {
 		}
 		
 	}
-		
+	
+	// Métodos de control del ciclo de vida de la aplicación
+	
+    @Override    
+    protected void onResume() {
+          super.onResume();
+          // Activamos notificaciones de localización
+          myLocMgr.requestLocationUpdates(myProvider, 10000, 15, this); // Envía localización cada 10000 ms o cada 15 m
+         
+    }
 
+    @Override    
+    protected void onPause() {
+          super.onPause();
+          // Desactivamos notificaciones de localización para ahorrar batería
+          myLocMgr.removeUpdates(this);
+    }
+
+    // Métodos de la interfaz LocationListener
+
+	@Override
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+		myLatitud = String.valueOf(location.getLatitude());
+        myLongitud = String.valueOf(location.getLongitude());
+        Toast.makeText(getBaseContext(), "Loc: " + myLatitud + "," + myLongitud, Toast.LENGTH_SHORT).show();
+	}
+
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -73,5 +142,6 @@ public class TTS_MainActivity extends Activity {
 		}
 		return false;
 	}
+
 
 }

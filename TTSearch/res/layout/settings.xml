@@ -25,15 +25,20 @@
     	android:defaultValue="25" />
 	<PreferenceCategory 
 	    android:title="@string/prefs_localizacion">
+	    <CheckBoxPreference
+	        android:key="LocManual"
+	        android:title="@string/locman_title"
+	        android:summary="@string/locman_summary"
+	    	android:defaultValue="true" />
 		<EditTextPreference
-		       android:key="Latitud"
-		       android:title="@string/lat_title"
-		       android:summary="@string/lat_summary"
-		   	android:defaultValue="40.417" />
+		    android:key="Latitud"
+		    android:title="@string/lat_title"
+		    android:summary="@string/lat_summary"
+		   	android:defaultValue="42.562350299483190" />
 		<EditTextPreference
-		       android:key="Longitud"
-		       android:title="@string/lon_title"
-		       android:summary="@string/lon_summary"
-		   	android:defaultValue="-3.703" />
+		    android:key="Longitud"
+		    android:title="@string/lon_title"
+		    android:summary="@string/lon_summary"
+		   	android:defaultValue="-8.825798034667968" />
 	</PreferenceCategory>
 </PreferenceScreen>

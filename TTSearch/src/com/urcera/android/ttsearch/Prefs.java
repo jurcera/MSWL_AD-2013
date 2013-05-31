@@ -15,6 +15,8 @@ public class Prefs extends PreferenceActivity {
 	private static final String OPT_UNITS_DEF = "km";
 	private static final String OPT_RPP = "ResultadosPorPag";
 	private static final String OPT_RPP_DEF = "25";
+	private static final String OPT_LOCMAN = "LocManual";
+	private static final boolean OPT_LOCMAN_DEF = true;
 	private static final String OPT_LAT = "Latitud";
 	private static final String OPT_LAT_DEF = "40.417";
 	private static final String OPT_LON = "Longitud";
@@ -44,6 +46,10 @@ public class Prefs extends PreferenceActivity {
 		return PreferenceManager.getDefaultSharedPreferences(context).getString(OPT_RPP, OPT_RPP_DEF);
 	}
 	
+	public static boolean getlocManual(Context context) {
+		return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(OPT_LOCMAN, OPT_LOCMAN_DEF);
+	}
+		
 	public static String getLatitud(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context).getString(OPT_LAT, OPT_LAT_DEF);
 	}

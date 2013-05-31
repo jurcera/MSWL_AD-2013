@@ -14,9 +14,12 @@
         </ListView>
  
         <TextView android:id="@id/android:empty"
-        android:background="@null"
-        android:text="@string/sin_datos"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent" />
+	        android:layout_height="fill_parent"
+	        android:layout_width="fill_parent"
+	        android:text="@string/sin_datos"
+	        android:textColor="#FF0000"
+	        android:textSize="18sp"
+	        android:gravity="center"
+	        android:background="#b0b0ff"/>
  
 </LinearLayout>
