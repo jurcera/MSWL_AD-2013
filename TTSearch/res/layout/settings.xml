@@ -34,11 +34,11 @@
 		    android:key="Latitud"
 		    android:title="@string/lat_title"
 		    android:summary="@string/lat_summary"
-		   	android:defaultValue="42.562350299483190" />
+		   	android:defaultValue="40.482925" />
 		<EditTextPreference
 		    android:key="Longitud"
 		    android:title="@string/lon_title"
 		    android:summary="@string/lon_summary"
-		   	android:defaultValue="-8.825798034667968" />
+		   	android:defaultValue="-3.363131" />
 	</PreferenceCategory>
 </PreferenceScreen>

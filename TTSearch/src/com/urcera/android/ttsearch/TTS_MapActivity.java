@@ -1,4 +1,28 @@
+/*
+ *
+ *  Copyright (C)2013, Jesus Urcera Lopez
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see http://www.gnu.org/licenses/. 
+ *
+ *  Author : Jesus Urcera Lopez <jurcera at gmail dot com>
+ *
+ */
+
+
 package com.urcera.android.ttsearch;
+
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +32,7 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.Overlay;
 
 public class TTS_MapActivity extends MapActivity{
 	
@@ -24,7 +49,9 @@ public class TTS_MapActivity extends MapActivity{
 		
 		tvLocation = (TextView) this.findViewById(R.id.tvMap);
 		mapview = (MapView) findViewById(R.id.TTSMapView);
-		
+		String mLat = null;
+		String mLon = null;
+				
 		// Recupero los datos pasados por el intent
 		
 		Intent i = getIntent();		// Captura el intent que arrancó esta actividad
@@ -37,18 +64,32 @@ public class TTS_MapActivity extends MapActivity{
 
 			if (mLatitud == null)  	// Comprueba si mLatitud tiene valor
 			{
-				mLatitud = "0.0";
+				mLatitud = TTS_ListActivity.LAT_DEF;
 			}
 
 			if (mLongitud == null)  // Comprueba si mLongitud tiene valor
 			{
-				mLongitud = "0.0";
+				mLongitud = TTS_ListActivity.LON_DEF;
 			}
 		}
 		
 		// Escribo el textview con la latitud y la longitud
 		
-		tvLocation.setText("Latitud: " + mLatitud + ", Longitud: " + mLongitud);	// Escribe en el textView el valor de longitud
+		// Recorto las cadenas a un máximo de 12 caracteres
+		
+		if (mLatitud.length()>12) {
+			mLat = mLatitud.substring(0, 12);
+		} else {
+			mLat = mLatitud;
+		}
+		
+		if (mLongitud.length()>12) {
+			mLon = mLongitud.substring(0, 12);
+		} else {
+			mLon = mLongitud;
+		}
+		
+		tvLocation.setText("Lat: " + mLat + ", Long: " + mLon);	// Escribe en el textView el valor de longitud
 		
 		
 		
@@ -67,9 +108,18 @@ public class TTS_MapActivity extends MapActivity{
 		mapControl.setZoom(14);					// Hace un determinado zoom
 		mapControl.animateTo(geoPoint);			// Mueve el mapa al punto indicado con geoPoint
 		
+		// Imprimo el overlay
 		
+		MapOverlay myMapOver = new MapOverlay();	// Crea una capa de mapa
+		myMapOver.setDrawable(getResources().getDrawable(R.drawable.twit));
+		myMapOver.setGeoPoint(geoPoint);
+		myMapOver.setTexto("Tweet");
 
-		
+		final List<Overlay> overlays = mapview.getOverlays();
+		overlays.clear();
+
+		overlays.add(myMapOver);
+			
 	}
 
 	

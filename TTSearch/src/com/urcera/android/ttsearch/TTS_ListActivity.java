@@ -1,3 +1,24 @@
+/*
+ *
+ *  Copyright (C)2013, Jesus Urcera Lopez
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see http://www.gnu.org/licenses/. 
+ *
+ *  Author : Jesus Urcera Lopez <jurcera at gmail dot com>
+ *
+ */
+
 package com.urcera.android.ttsearch;
 
 import java.io.BufferedReader;
@@ -22,39 +43,38 @@ import org.json.JSONObject;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-
 public class TTS_ListActivity extends ListActivity  {
 
 	public static String MPLAT = "MPLATITUD";
 	public static String MPLON = "MPLONGITUD";
-	public static String LAT_DEF = "42.5623502994";
-	public static String LON_DEF = "-8.8257980346";
+	public static String LAT_DEF = "42.5623502994";		// Latitud por defecto
+	public static String LON_DEF = "-8.8257980346";		// Longitud por defecto
 	
 	ArrayList<HashMap<String,String>> Twits; // Array para almacenar los twits
 	 
-	//Con los siguientes Arrays establecemos la correspondencia
-	//entre los elementos del Array de HashMaps de twits (from)
-	//con los elementos del diseño en XML de cada una de las filas (to)
+	// Con los arrays from y to se establece la relación entre los elementos del Array de HashMaps 
+	// de twits (from) y los elementos del diseño (row.xml) de la lista (to).
 
 	String[] from=new String[] {"Index","Name","Date","Message","Location"};
 	int[] to=new int[]{R.id.index,R.id.name,R.id.date,R.id.message,R.id.location};
 	
 	String Url = null;
 	String urlSearch = null;
-	String query = null;
-	String latitude = null;
+	String query = null;				// Consulta
+	String latitude = null;				// Posición central del radio de busqueda
 	String longitude = null;
-	String gpsLatitude = null;			// Posición gps del móvil
+	String gpsLatitude = null;			// Posición obtenida del servicio de localización del móvil
 	String gpsLongitude = null;
-	String range = null;
-	String units = null;
-	String rpp = null;
+	String range = null;				// Radio de búsqueda
+	String units = null;				// Unidades del radio de búsqueda
+	String rpp = null;					// Máximo número de respuestas por consulta
 	String mapLatitude = null;			// Posición donde está localizado el twit
 	String mapLongitude = null;
 	boolean locManual = true;
@@ -94,19 +114,16 @@ public class TTS_ListActivity extends ListActivity  {
 		//Toast.makeText(getBaseContext(), gpsLatitude +" "+ gpsLongitude, Toast.LENGTH_SHORT).show();
 		
 		// >>>>>>>>>> Para que funcione en el dispositivo móvil hasta que no habilite el asynctask <<<<<<<<<<<<
-		//StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
-		//StrictMode.setThreadPolicy(policy);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
+		StrictMode.setThreadPolicy(policy);
 		
 		
 		ArrayList<String[]> lista = new ArrayList<String[]>();
 		
-		/*
-		String[] twit1 = {"1","Jesus Urc","Tue, 14 May 2013 08:37:43 +0000","Hola, esto es una prueba", "MAP: 0.0,0.0"};
-		lista.add(twit1);
-		*/
 		
 		// Obtengo el JSON de la url indicada
 		String readJSON = readJSONFeed();
+		//String readJSON = new bgTask().execute("http://feeds.pcworld.com/pcworld/latestnews");
 		
 		// Extraigo los datos que necesito del JSON
 		try {
@@ -187,24 +204,21 @@ public class TTS_ListActivity extends ListActivity  {
 		        datosTwit.put("Location", elemento[4]);
 		 
 		        Twits.add(datosTwit);
-		        
 		}
-		    // Una vez tenemos toda la información necesaria para rellenar la lista
-		    // creamos un elemento que nos facilitará la tarea:
-		    // SimpleAdapter(Actividad, Array de HashMap con elementos, Fichero XML del
-		    // diseño de cada fila, Cadenas del HashMap, Ids del Fichero XML del diseño de cada fila)
+		
+		// Una vez tenemos toda la información necesaria para rellenar la lista creamos un elemento 
+		// que nos facilitará la tarea: SimpleAdapter(Actividad, Array de HashMap con elementos, 
+		// Fichero XML del diseño de cada fila, Cadenas del HashMap, Ids del Fichero XML del diseño 
+		// de cada fila)
 		SimpleAdapter ListadoAdapter=new SimpleAdapter(this, Twits, R.layout.row, from, to);
 		setListAdapter(ListadoAdapter);
-		
-		//Log.d("ArrayList", String.valueOf(Twits.get(0)));
 	}
 
-		
+
 	public String readJSONFeed() {
 		StringBuilder builder = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
 		urlSearch = Prefs.getUrlSearch(getBaseContext());	// Obtengo el dato de las preferencias de la aplicación
-		
 		locManual = Prefs.getlocManual(getBaseContext());	// Obtengo el dato de las preferencias de la aplicación
 		
 		if (locManual) {
@@ -220,7 +234,7 @@ public class TTS_ListActivity extends ListActivity  {
 		rpp = Prefs.getResultadosPorPag(getBaseContext());	// Obtengo el dato de las preferencias de la aplicación
 
 		Url = urlSearch + query + "&geocode=" + latitude + "," + longitude + "," + range + units + "&rpp=" + rpp;
-		//Url = "http://search.twitter.com/search.json?q=Raspberry+Pi&geocode=40.417,-3.703,100km&rpp=25";
+		// Ejemplo: Url = "http://search.twitter.com/search.json?q=Raspberry+Pi&geocode=40.417,-3.703,100km&rpp=25";
 		
 		Log.d("Suso",Url);
 
@@ -254,6 +268,40 @@ public class TTS_ListActivity extends ListActivity  {
 		return builder.toString();
 	}
 	
+	// The definition of our task class
+	/*
+	private class bgTask extends AsyncTask<String, Integer, String> {
+		
+	   @Override
+	   protected void onPreExecute() {
+	      super.onPreExecute();
+	      //displayProgressBar("Downloading...");
+	   }
+	 
+	   @Override
+	   protected String doInBackground(String... params) {
+	      //String url=params[0];
+	 
+	      readJSONFeed();
+	      
+	      publishProgress(50);
+	      
+	      return "All Done!";
+	   }
+	 
+	   @Override
+	   protected void onProgressUpdate(Integer... values) {
+	      super.onProgressUpdate(values);
+	      //updateProgressBar(values[0]);
+	   }
+	 
+	   @Override
+	   protected void onPostExecute(String result) {
+	      super.onPostExecute(result);
+	      //dismissProgressBar();
+	   }
+	}
+	*/
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {

@@ -1,3 +1,25 @@
+/*
+ *
+ *  Copyright (C)2013, Jesus Urcera Lopez
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see http://www.gnu.org/licenses/. 
+ *
+ *  Author : Jesus Urcera Lopez <jurcera at gmail dot com>
+ *
+ */
+
+
 package com.urcera.android.ttsearch;
 
 import android.app.Activity;
@@ -31,16 +53,13 @@ public class TTS_MainActivity extends Activity implements LocationListener {
 		setContentView(R.layout.activity_tts__main);
 		
 		final EditText edText = (EditText)findViewById(R.id.edtBusqueda);
+				
+		myLocMgr = (LocationManager) getSystemService(LOCATION_SERVICE);
+		Criteria criteria = new Criteria();
+		myProvider = myLocMgr.getBestProvider(criteria, true);
+		Toast.makeText(getBaseContext(), "Proveedor de posición: " + myProvider, Toast.LENGTH_SHORT).show();
 		
-		
-			myLocMgr = (LocationManager) getSystemService(LOCATION_SERVICE);
-			Criteria criteria = new Criteria();
-			myProvider = myLocMgr.getBestProvider(criteria, true);
-			Toast.makeText(getBaseContext(), "Proveedor de posición: " + myProvider, Toast.LENGTH_SHORT).show();
-		
-		
-			
-		
+				
         Button bt1 = (Button) this.findViewById(R.id.butBusqueda);	// Asignamos el botón butBusqueda a bt1
 		if (bt1 != null)										
 		{
@@ -58,9 +77,17 @@ public class TTS_MainActivity extends Activity implements LocationListener {
 					if (data.equals("")) {							// Compruebo que no está vacío
 						Toast.makeText(getBaseContext(), "Introducir un término a buscar", Toast.LENGTH_SHORT).show();
 					} else {
+						
+						
+						// Comprobar si hay localización GPS válida
+						
+						if (myLatitud == null || myLongitud == null) {
+							Toast.makeText(getBaseContext(), "Sin localización GPS válida\nusando localización por defecto", Toast.LENGTH_SHORT).show();
+						}
+						
 						// Definimos donde estamos (getBaseContext()) y a donde vamos (TTS_ListActivity)
 						
-						Intent intent = new Intent(getBaseContext(), TTS_ListActivity.class);
+						Intent intent = new Intent(getBaseContext(), TTS_ListActivity.class); 
 						intent.putExtra(DATA, data);				// Pasa la query a la ListActivity
 						intent.putExtra(LAT, myLatitud);			// Pasa la latitud de la posición del móvil
 						intent.putExtra(LON, myLongitud);			// Pasa la longitud de la posición del móvil
