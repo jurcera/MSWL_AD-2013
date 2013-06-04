@@ -36,11 +36,11 @@ import com.google.android.maps.Overlay;
 
 public class TTS_MapActivity extends MapActivity{
 	
-	private MapView mapview = null;				// Inicializar la vista del mapa
-	private MapController mapControl = null;	// Inicializar el controlador de mapas
-	private TextView tvLocation = null;
-	private String mLatitud = null;
-	private String mLongitud = null;
+	private MapView mapview = null;				// Initialize the map view
+	private MapController mapControl = null;	// Initialize the map controller
+	private TextView tvLocation = null;			// Initialize text view at the top of MapActivity
+	private String mLatitude = null;			// Latitude from ListActivity
+	private String mLongitude = null;			// Longitude from ListActivity
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,71 +49,69 @@ public class TTS_MapActivity extends MapActivity{
 		
 		tvLocation = (TextView) this.findViewById(R.id.tvMap);
 		mapview = (MapView) findViewById(R.id.TTSMapView);
-		String mLat = null;
-		String mLon = null;
-				
-		// Recupero los datos pasados por el intent
+		String mLat = null;						// Latitude that I only show at the top of MapActivity
+		String mLon = null;						// Longitude that I only show at the top of MapActivity
 		
-		Intent i = getIntent();		// Captura el intent que arrancó esta actividad
-		if (i != null)  			// Confirma si la actividad se arrancó a través de un intent
+		// Retrieve the data passed by the intent from ListActivity
+		
+		Intent i = getIntent();					// Capture the intent that started this activity
+		if (i != null)  						// Confirms if this activity was started through an intent
 		{
-			mLatitud = i.getStringExtra(TTS_ListActivity.MPLAT); 	// Recoje el valor de la variable LAT pasado desde la MainActivity
-			mLongitud = i.getStringExtra(TTS_ListActivity.MPLON); 	// Recoje el valor de la variable LON pasado desde la MainActivity
+			mLatitude = i.getStringExtra(TTS_ListActivity.MPLAT); 	// Latitude from ListActivity
+			mLongitude = i.getStringExtra(TTS_ListActivity.MPLON); 	// Longitude from ListActivity
 
-			// Asigno valores por si falta alguno
+			// Assign default values if any are missing
 
-			if (mLatitud == null)  	// Comprueba si mLatitud tiene valor
+			if (mLatitude == null)  			// Checks if mLatitude has value
 			{
-				mLatitud = TTS_ListActivity.LAT_DEF;
+				mLatitude = TTS_ListActivity.LAT_DEF;	// Assigns default value to mLatitude
 			}
 
-			if (mLongitud == null)  // Comprueba si mLongitud tiene valor
+			if (mLongitude == null)  			// Checks if mLongitude has value
 			{
-				mLongitud = TTS_ListActivity.LON_DEF;
+				mLongitude = TTS_ListActivity.LON_DEF;	// Assigns default value to mLongitude
 			}
 		}
 		
-		// Escribo el textview con la latitud y la longitud
+		// I cut the strings up to 12 characters, for display only.
 		
-		// Recorto las cadenas a un máximo de 12 caracteres
-		
-		if (mLatitud.length()>12) {
-			mLat = mLatitud.substring(0, 12);
+		if (mLatitude.length()>12) {
+			mLat = mLatitude.substring(0, 12);
 		} else {
-			mLat = mLatitud;
+			mLat = mLatitude;
 		}
 		
-		if (mLongitud.length()>12) {
-			mLon = mLongitud.substring(0, 12);
+		if (mLongitude.length()>12) {
+			mLon = mLongitude.substring(0, 12);
 		} else {
-			mLon = mLongitud;
+			mLon = mLongitude;
 		}
 		
-		tvLocation.setText("Lat: " + mLat + ", Long: " + mLon);	// Escribe en el textView el valor de longitud
+		// Writes latitude and longitude in text view at top
 		
+		tvLocation.setText("Lat: " + mLat + ", Long: " + mLon);	
 		
+		// Prints the map
 		
-		// Imprimo el mapa
+		mapview.setBuiltInZoomControls(true); 	// To be able to zoom on the map
+		mapview.setClickable(true);				// To be able to move the map
+		//mapview.setSatellite(true);			// Satellite view
 		
-		mapview.setBuiltInZoomControls(true); 	// mover poder hacer zoom
-		mapview.setClickable(true);				// para poder mover el mapa
-		//mapview.setSatellite(true);			// para ver vista de satélite
-		
-		mapControl = mapview.getController();	// para poder usar el controlador de mapas
+		mapControl = mapview.getController();	// To be able to use map controller
 	
-		GeoPoint geoPoint = new GeoPoint (		// Definimos un punto del mapa
-			(int) (Double.valueOf(mLatitud) * 1000000),		// Latitud 40.33483  (Norte-Sur)
-			(int) (Double.valueOf(mLongitud) * 1000000));	// Longitud -3.87397 (Este-Oeste)
+		GeoPoint geoPoint = new GeoPoint (		// Defines a map point 
+			(int) (Double.valueOf(mLatitude) * 1000000),	// Latitude example: 40.33483  (North-South)
+			(int) (Double.valueOf(mLongitude) * 1000000));	// Longitude example: -3.87397 (East-West)
 		
-		mapControl.setZoom(14);					// Hace un determinado zoom
-		mapControl.animateTo(geoPoint);			// Mueve el mapa al punto indicado con geoPoint
+		mapControl.setZoom(14);					// Makes a specified zoom
+		mapControl.animateTo(geoPoint);			// Moves the map to geoPoint point
 		
-		// Imprimo el overlay
+		// Prints the overlay
 		
-		MapOverlay myMapOver = new MapOverlay();	// Crea una capa de mapa
-		myMapOver.setDrawable(getResources().getDrawable(R.drawable.twit));
-		myMapOver.setGeoPoint(geoPoint);
-		myMapOver.setTexto("Tweet");
+		MapOverlay myMapOver = new MapOverlay();	// Makes a map layout
+		myMapOver.setDrawable(getResources().getDrawable(R.drawable.twit));	// Image to print in map
+		myMapOver.setGeoPoint(geoPoint);			
+		myMapOver.setTexto("Tweet");				// Text to print in map
 
 		final List<Overlay> overlays = mapview.getOverlays();
 		overlays.clear();

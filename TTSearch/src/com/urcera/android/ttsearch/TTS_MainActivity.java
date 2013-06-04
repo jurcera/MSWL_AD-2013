@@ -53,45 +53,43 @@ public class TTS_MainActivity extends Activity implements LocationListener {
 		setContentView(R.layout.activity_tts__main);
 		
 		final EditText edText = (EditText)findViewById(R.id.edtBusqueda);
-				
+		
+	
 		myLocMgr = (LocationManager) getSystemService(LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
 		myProvider = myLocMgr.getBestProvider(criteria, true);
-		Toast.makeText(getBaseContext(), "Proveedor de posición: " + myProvider, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getBaseContext(), getString(R.string.location_provider)+ " " + myProvider, Toast.LENGTH_SHORT).show();
 		
 				
-        Button bt1 = (Button) this.findViewById(R.id.butBusqueda);	// Asignamos el botón butBusqueda a bt1
+        Button bt1 = (Button) this.findViewById(R.id.butBusqueda);	// Assign button butBusqueda to bt1
 		if (bt1 != null)										
 		{
-			bt1.setOnClickListener(new OnClickListener() { 			// Crea un listener para bt1 	
+			bt1.setOnClickListener(new OnClickListener() { 			// Create a listener for bt1 	
 				
 				@Override
-				public void onClick(View v) {						// Cuando se pulsa bt1 ...
+				public void onClick(View v) {						// When I push bt1 ...
 					// TODO Auto-generated method stub
 					
-					data = edText.getText().toString();				// Obtengo el valor del EditText
-					data = data.replace(" ", "+");					// Sustituyo espacios por + en la cadena de búsqueda
+					data = edText.getText().toString();				// Read EditText data
+					data = data.replace(" ", "+");					// Replace spaces for + in query
 					
-					// Toast.makeText(getBaseContext(), data, Toast.LENGTH_SHORT).show();
-										
-					if (data.equals("")) {							// Compruebo que no está vacío
-						Toast.makeText(getBaseContext(), "Introducir un término a buscar", Toast.LENGTH_SHORT).show();
+					if (data.equals("")) {							// Is query empty?
+						Toast.makeText(getBaseContext(), R.string.empty_query, Toast.LENGTH_SHORT).show();
 					} else {
 						
-						
-						// Comprobar si hay localización GPS válida
+						// Is there GPS valid location?
 						
 						if (myLatitud == null || myLongitud == null) {
-							Toast.makeText(getBaseContext(), "Sin localización GPS válida\nusando localización por defecto", Toast.LENGTH_SHORT).show();
+							Toast.makeText(getBaseContext(), R.string.no_gps_location, Toast.LENGTH_SHORT).show();
 						}
 						
-						// Definimos donde estamos (getBaseContext()) y a donde vamos (TTS_ListActivity)
+						// Jump to ListActivity
 						
 						Intent intent = new Intent(getBaseContext(), TTS_ListActivity.class); 
-						intent.putExtra(DATA, data);				// Pasa la query a la ListActivity
-						intent.putExtra(LAT, myLatitud);			// Pasa la latitud de la posición del móvil
-						intent.putExtra(LON, myLongitud);			// Pasa la longitud de la posición del móvil
-						startActivity(intent);						// ... arranca la actividad TTS_ListActivity.
+						intent.putExtra(DATA, data);				// Send query to ListActivity
+						intent.putExtra(LAT, myLatitud);			// Send latitude location to ListActivity
+						intent.putExtra(LON, myLongitud);			// Send longitude location to ListActivity 
+						startActivity(intent);						// start ListActivity.
 						
 					}
 					
@@ -101,24 +99,22 @@ public class TTS_MainActivity extends Activity implements LocationListener {
 		
 	}
 	
-	// Métodos de control del ciclo de vida de la aplicación
-	
     @Override    
     protected void onResume() {
           super.onResume();
-          // Activamos notificaciones de localización
-          myLocMgr.requestLocationUpdates(myProvider, 10000, 15, this); // Envía localización cada 10000 ms o cada 15 m
+          // Enable location notifications
+          myLocMgr.requestLocationUpdates(myProvider, 10000, 15, this); // Send location every 10000 ms or 15 m
          
     }
 
     @Override    
     protected void onPause() {
           super.onPause();
-          // Desactivamos notificaciones de localización para ahorrar batería
+          // Disable location notifications to save battery
           myLocMgr.removeUpdates(this);
     }
 
-    // Métodos de la interfaz LocationListener
+    // LocationListener interface methods
 
 	@Override
 	public void onLocationChanged(Location location) {

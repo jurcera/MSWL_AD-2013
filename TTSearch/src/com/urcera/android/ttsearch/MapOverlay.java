@@ -58,31 +58,28 @@ public class MapOverlay extends Overlay {
 		if (!shadow) {
 			// Make sure to give mMarker bounds so it will draw in the overlay
 			
-			final int intrinsicWidth = mMarker.getIntrinsicWidth();		// Ancho de la imagen fija de 50 puntos
-			final int intrinsicHeight = mMarker.getIntrinsicHeight();	// Alto de la imagen fija de 50 puntos
-			mMarker.setBounds(0, 0, intrinsicWidth, intrinsicHeight);			// Rectángulo donde meter la imagen
-																				// (izquiera, arriba, derecha, abajo)
+			final int intrinsicWidth = mMarker.getIntrinsicWidth();		// Image width
+			final int intrinsicHeight = mMarker.getIntrinsicHeight();	// Image height
+			mMarker.setBounds(0, 0, intrinsicWidth, intrinsicHeight);	// Rectangle where to put the image
+																		// (left, top, right, bottom)
 
 			mMarkerXOffset = (intrinsicWidth / 2);
 			mMarkerYOffset = (intrinsicHeight / 2);
 
 			Paint paint = new Paint();
-			paint.setARGB(250,255,0,0);		// Transparencia y Color del texto
-			paint.setAntiAlias(true);		// Suavizar bordes
-			paint.setFakeBoldText(true);	// Negrita
-			paint.setTextSize(22);			// Tamaño del texto
+			paint.setARGB(250,255,0,0);		// Transparency y text color
+			paint.setAntiAlias(true);		// Smooth edges
+			paint.setFakeBoldText(true);	// Bold face
+			paint.setTextSize(22);			// Text size
 			
 			Point point = new Point();
-			Projection proy = mapView.getProjection();	// Creo una proyección
-			proy.toPixels(mGeoPoint, point);			// Convierte las coordenadas del mapa en pixels de la imagen
+			Projection proy = mapView.getProjection();	// Create a projection
+			proy.toPixels(mGeoPoint, point);			// Converts map coordinates in pixels of the image
      		
-			canvas.drawText(mText, (float) (point.x - mMarkerXOffset * 6.0), (float) (point.y + (mMarkerYOffset * 5.6)) , paint);	// escribe el texto
-			//canvas.drawText(mText, (float) (point.x - (mText.length() * 5)), (float) (point.y + (mMarkerYOffset * 5.6)) , paint);	// escribe el texto
+			// Write the text
+			canvas.drawText(mText, (float) (point.x - mMarkerXOffset * 6.0), (float) (point.y + (mMarkerYOffset * 5.6)) , paint);	
 			
-			// El cálculo del offset del eje x ha sido de forma empírica. He visto que de media 8 caracteres del texto actual ocupan 50 pixel
-			// con lo que 1 caracter son 6 pixel y como está centrado divido por dos, con lo que multiplico el número de caracteres por 3 
-			// para el cálculo aproximado. He probado en varias resoluciones de pantalla y el resultado es similar.
-			
+			// Draw the image
 			super.draw(canvas, mapView, shadow);
 			drawAt(canvas, mMarker, point.x - mMarkerXOffset, point.y - mMarkerYOffset, shadow);
 		}
