@@ -48,11 +48,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class TTS_ListActivity extends ListActivity  {
 
@@ -115,16 +113,19 @@ public class TTS_ListActivity extends ListActivity  {
 			}
 		}
 		
-		// >>>>>>>>>> Para que funcione en el dispositivo móvil hasta que no habilite el asynctask <<<<<<<<<<<<
+		// >>>>>>>>>> To work on the mobile device until I enable AsyncTask <<<<<<<<<<<<
 		//StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
 		//StrictMode.setThreadPolicy(policy);
 	
+		
+		// Configures the progress dialog that is displayed while downloading the JSON
 		dialog = new ProgressDialog(this);
 	    dialog.setTitle("Progreso");
 	    dialog.setMessage("Descargando ...");
 	    dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 	    dialog.setCancelable(true);
 		
+	    // Downloads JSON and generates the list
 		new bgTask().execute();
 	
 	}
@@ -301,9 +302,8 @@ public class TTS_ListActivity extends ListActivity  {
 		   if (emptyList) {
 
 		   } else {
-			   // Transformamos los elementos String[] en HashMap para
-			   // posteriormente incluirlos en el Array Global que se utilizará
-			   // para rellenar la lista
+			   // Transforms the String[] elements in HashMap for later inclusion in the Global 
+			   // Array to be used to populate the list
 			   Twits = new ArrayList<HashMap<String, String>>();
 
 			   for(String[] element:list){
@@ -319,10 +319,9 @@ public class TTS_ListActivity extends ListActivity  {
 				   Twits.add(datosTwit);
 			   }
 
-			   // Una vez tenemos toda la información necesaria para rellenar la lista creamos un elemento 
-			   // que nos facilitará la tarea: SimpleAdapter(Actividad, Array de HashMap con elementos, 
-			   // Fichero XML del diseño de cada fila, Cadenas del HashMap, Ids del Fichero XML del diseño 
-			   // de cada fila)
+			   // Once we have all the information needed to populate the list we create an element that
+			   // will facilitate the task: SimpleAdapter(Activity, HashMap Array with elements, 
+			   // row design xml file, HashMap strings, design elements from xml file)
 			   SimpleAdapter ListadoAdapter=new SimpleAdapter(getBaseContext(), Twits, R.layout.row, from, to);
 			   setListAdapter(ListadoAdapter);
 		   }
@@ -364,6 +363,7 @@ public class TTS_ListActivity extends ListActivity  {
         
         // Toast.makeText(getBaseContext(), "Lat: " + mpLatitude + "Lon:" + mpLongitude, Toast.LENGTH_SHORT).show();
         
+        // Jump to MapActivity
         Intent intent = new Intent(getBaseContext(), TTS_MapActivity.class);
 		intent.putExtra(MPLAT, mpLatitude);
 		intent.putExtra(MPLON, mpLongitude);

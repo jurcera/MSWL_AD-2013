@@ -57,7 +57,8 @@ public class TTS_MainActivity extends Activity implements LocationListener {
 	
 		myLocMgr = (LocationManager) getSystemService(LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
-		myProvider = myLocMgr.getBestProvider(criteria, true);
+		myProvider = myLocMgr.getBestProvider(criteria, true); // Select best location provider
+		
 		Toast.makeText(getBaseContext(), getString(R.string.location_provider)+ " " + myProvider, Toast.LENGTH_SHORT).show();
 		
 				
@@ -74,13 +75,13 @@ public class TTS_MainActivity extends Activity implements LocationListener {
 					data = data.replace(" ", "+");					// Replace spaces for + in query
 					
 					if (data.equals("")) {							// Is query empty?
-						Toast.makeText(getBaseContext(), R.string.empty_query, Toast.LENGTH_SHORT).show();
+						Toast.makeText(getBaseContext(), getString(R.string.empty_query), Toast.LENGTH_SHORT).show();
 					} else {
 						
-						// Is there GPS valid location?
+						// Is there a GPS valid location?
 						
 						if (myLatitud == null || myLongitud == null) {
-							Toast.makeText(getBaseContext(), R.string.no_gps_location, Toast.LENGTH_SHORT).show();
+							Toast.makeText(getBaseContext(), getString(R.string.no_gps_location), Toast.LENGTH_SHORT).show();
 						}
 						
 						// Jump to ListActivity
