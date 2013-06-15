@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF"
+    tools:context=".HEmet_MainActivity" >
+    <!-- android:background="#b0b0ff" -->
+    
+    <ImageView 
+        android:id="@+id/imgLogo"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_hemet"
+        android:contentDescription="@string/imglogo" />
+
+    <TextView
+        android:id="@+id/tvConnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="#0000ff"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:text="@string/tvconnect" />
+    
+    <Button 
+        android:id="@+id/butConnect"
+    	android:layout_width="wrap_content"
+    	android:layout_height="35dp"
+    	android:textSize="12sp"
+    	android:layout_marginTop="10dp"
+    	android:layout_gravity="center"
+    	android:text="@string/butconnect"/>
+
+</LinearLayout>
