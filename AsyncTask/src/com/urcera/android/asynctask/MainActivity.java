@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 	    dialog.setCancelable(false);
    
 	    urlFilename = "http://dl.dropboxusercontent.com/u/34909625/"; 	// Ruta de la imagen a descargar
-	    filename = "andrea.jpg";			// rodrigo.jpg y jesusadrian.jpg (Fichero a descargar)
+	    filename = "android.png";			// rodrigo.jpg y jesusadrian.jpg (Fichero a descargar)
 	    urlConexion = urlFilename + filename;							// URL completa
 	    URL miUrl = null;
 	    
