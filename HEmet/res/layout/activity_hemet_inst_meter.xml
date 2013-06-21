@@ -101,7 +101,7 @@
     </LinearLayout>
     
     <TextView
-        android:id="@+id/tv_title_head_powerf"
+        android:id="@+id/tv_head_inst_graphs"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textStyle="italic"
@@ -110,24 +110,43 @@
         android:layout_marginBottom="5dp" 
         android:textColor="#ffffff"
         android:textSize="12sp"
-        android:text="@string/head_power_factor" />
+        android:text="@string/head_inst_graphs" />
     
-    <TextView
-        android:id="@+id/tv_title_power_factor"
-        android:layout_width="100dp"
+      <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title_power_factor"
-        android:textSize="12sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_value_power_factor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/value_power_factor"
-        android:textSize="32sp"
-        android:textStyle="bold" />
-    
+          <Button
+              android:id="@+id/btVolt"
+              android:layout_width="wrap_content"
+              android:layout_height="34dp"
+              android:textSize="12sp"
+              android:textStyle="bold"
+              android:layout_weight="1"
+              android:text="@string/bt_volt" />
+
+          <Button
+              android:id="@+id/btCurr"
+              android:layout_width="wrap_content"
+              android:layout_height="34dp"
+              android:textSize="12sp"
+              android:textStyle="bold"
+              android:layout_weight="1"
+              android:text="@string/bt_curr" />
+
+          <Button
+              android:id="@+id/btFreq"
+              android:layout_width="wrap_content"
+              android:layout_height="34dp"
+              android:textSize="12sp"
+              android:textStyle="bold"
+			  android:layout_weight="1"
+              android:text="@string/bt_freq" />
+        
+    </LinearLayout>
+        
     <com.androidplot.xy.XYPlot
         android:id="@+id/mySimpleXYPlotVolt"
         android:layout_width="fill_parent"
@@ -135,11 +154,4 @@
         android:layout_marginTop="10dp"
         title="A Simple XYPlot Example" />
 	
-	<com.androidplot.xy.XYPlot
-        android:id="@+id/mySimpleXYPlotCurr"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        title="A Simple XYPlot Example" />
-
 </LinearLayout>
