@@ -1,0 +1,232 @@
+<!--
+ *  Copyright (C)2013, Jesus Urcera Lopez
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see http://www.gnu.org/licenses/. 
+ *
+ *  Author : Jesus Urcera Lopez <jurcera at gmail dot com>
+ *
+-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#80AB55" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context=".HEmet_menu" >
+
+        <TextView
+            android:id="@+id/tv_title_head_menu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#233C09"
+            android:text="@string/head_label_menu"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/instBasic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btInstBasic"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_inst_basic"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btInstPower"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_inst_power"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title_hist_basic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#233C09"
+            android:text="@string/head_label_hist_basic"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/histBasic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btHistVolt"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_volt"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btHistCurr"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_curr"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btHistFreq"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_freq"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title_hist_power"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#233C09"
+            android:text="@string/head_label_hist_power"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/histPower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btHistPact"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_pact"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btHistPrea"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_prea"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btHistPapp"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_papp"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title_hist_energy"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#233C09"
+            android:text="@string/head_label_hist_energy"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:id="@+id/histErergy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btHistEact"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_eact"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btHistErea"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_erea"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btHistEapp"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_weight="1"
+                android:text="@string/bt_hist_eapp"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title_hist_cost"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#233C09"
+            android:text="@string/head_label_hist_cost"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/btHistCost"
+            android:layout_width="fill_parent"
+            android:layout_height="34dp"
+            android:text="@string/bt_hist_cost"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</ScrollView>

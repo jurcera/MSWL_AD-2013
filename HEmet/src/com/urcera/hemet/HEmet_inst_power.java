@@ -23,15 +23,6 @@ package com.urcera.hemet;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
-import android.app.Activity;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.PointLabelFormatter;
 import com.androidplot.xy.SimpleXYSeries;
@@ -39,31 +30,38 @@ import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 import com.androidplot.xy.XYStepMode;
 
+import android.os.Bundle;
+import android.app.Activity;
+import android.graphics.Color;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class HEmet_inst_meter extends Activity {
+public class HEmet_inst_power extends Activity {
 	
 	private XYPlot mySimpleXYPlot;
-	private TextView tvVolt = null;
-	private TextView tvCurr = null;
-	private TextView tvFreq = null;
-	
+	private TextView tvPact = null;
+	private TextView tvPrea = null;
+	private TextView tvPapp = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_hemet_inst_meter);
+		setContentView(R.layout.activity_hemet_inst_power);
 		
-		tvVolt = (TextView) this.findViewById(R.id.tv_value_volt1);
-		tvCurr = (TextView) this.findViewById(R.id.tv_value_curr1);
-		tvFreq = (TextView) this.findViewById(R.id.tv_value_freq1);
+		tvPact = (TextView) this.findViewById(R.id.tv_value_pact);
+		tvPrea = (TextView) this.findViewById(R.id.tv_value_prea);
+		tvPapp = (TextView) this.findViewById(R.id.tv_value_papp);
 		
 		// initialize our XYPlot reference:
-		mySimpleXYPlot = (XYPlot) findViewById(R.id.mySimpleXYPlotVolt);
+		mySimpleXYPlot = (XYPlot) findViewById(R.id.mySimpleXYPlotPower);
 		
-		Number[] voltageValues = {232.4, 232.8, 233.0, 232.9, 232.5, 233.0, 233.0, 233.1, 232.9, 232.8, 233.5, 233.8};
-		printGraph(" -- " + getString(R.string.label_volt) + " --", voltageValues, getString(R.string.label_time),getString(R.string.unit_volt));
+		Number[] pactValues = {12.123, 13.228, 14.000, 12.989, 12.500, 13.233, 14.233, 11.233, 12.329, 12.331, 12.500, 13.233};
+		printGraph(" -- " + getString(R.string.label_act) + " -- ", pactValues, getString(R.string.label_time),getString(R.string.unit_kWat));
 		
-		Button bt1 = (Button) this.findViewById(R.id.btVolt);	// Asignamos el boton1 a bt1
+		Button bt1 = (Button) this.findViewById(R.id.btPact);	// Asignamos el boton1 a bt1
 		if (bt1 != null)										
 		{
 			bt1.setOnClickListener(new OnClickListener() { 		// Crea un listener para en boton1 	
@@ -71,15 +69,15 @@ public class HEmet_inst_meter extends Activity {
 				@Override
 				public void onClick(View v) {					// Llama a actividad1 al pulsar boton1
 										
-					Number[] voltageValues = {232.4, 232.8, 233.0, 232.9, 232.5, 233.0, 233.0, 233.1, 232.9, 233.1, 233.0, 232.9};
+					Number[] pactValues = {12.123, 13.228, 14.000, 12.989, 12.500, 13.233, 14.233, 11.233, 12.329, 12.331, 12.000, 11.800};
 					
-					tvVolt.setText(String.valueOf(voltageValues[voltageValues.length - 1]));
-					printGraph(getString(R.string.label_volt), voltageValues, getString(R.string.label_time),getString(R.string.unit_volt));
+					tvPact.setText(String.valueOf(pactValues[pactValues.length - 1]));
+					printGraph(getString(R.string.label_act), pactValues, getString(R.string.label_time),getString(R.string.unit_kWat));
 				}
 			} );
 		}
 		
-		Button bt2 = (Button) this.findViewById(R.id.btCurr);	// Asignamos el boton1 a bt1
+		Button bt2 = (Button) this.findViewById(R.id.btPrea);	// Asignamos el boton1 a bt1
 		if (bt2 != null)										
 		{
 			bt2.setOnClickListener(new OnClickListener() { 		// Crea un listener para en boton1 	
@@ -87,17 +85,17 @@ public class HEmet_inst_meter extends Activity {
 				@Override
 				public void onClick(View v) {					// Llama a actividad1 al pulsar boton1
 										
-					Number[] currentValues = {3.2, 3.8, 3.0, 2.9, 2.5, 3.0, 3.0, 3.1, 2.9, 2.8, 3.6, 4.0};
+					Number[] preaValues = {0.456, 3.845, 3.034, 2.922, 2.589, 3.098, 3.456, 3.231, 2.967, 2.832, 2.889, 3.654};
 					
-					tvCurr.setText(String.valueOf(currentValues[currentValues.length - 1]));
-					printGraph(getString(R.string.label_curr), currentValues, getString(R.string.label_time),getString(R.string.unit_ampere));
+					tvPrea.setText(String.valueOf(preaValues[preaValues.length - 1]));
+					printGraph(getString(R.string.label_react), preaValues, getString(R.string.label_time),getString(R.string.unit_kVoltAmpReact));
 					
 					
 				}
 			} );
 		}
 		
-		Button bt3 = (Button) this.findViewById(R.id.btFreq);	// Asignamos el boton1 a bt1
+		Button bt3 = (Button) this.findViewById(R.id.btPapp);	// Asignamos el boton1 a bt1
 		if (bt3 != null)										
 		{
 			bt3.setOnClickListener(new OnClickListener() { 		// Crea un listener para en boton1 	
@@ -105,10 +103,10 @@ public class HEmet_inst_meter extends Activity {
 				@Override
 				public void onClick(View v) {					// Llama a actividad1 al pulsar boton1
 										
-					Number[] frequencyValues = {50.00, 49.83, 50.00, 50.20, 50.50, 51.00, 50.95, 50.10, 50.90, 50.80, 50.85, 49.95};
+					Number[] pappValues = {12.230, 13.528, 14.400, 13.389, 12.900, 13.533, 14.633, 11.433, 12.729, 12.831, 12.600, 12.400};
 					
-					tvFreq.setText(String.valueOf(frequencyValues[frequencyValues.length - 1]));
-					printGraph(getString(R.string.label_freq), frequencyValues, getString(R.string.label_time),getString(R.string.unit_hertz));
+					tvPapp.setText(String.valueOf(pappValues[pappValues.length - 1]));
+					printGraph(getString(R.string.label_app), pappValues, getString(R.string.label_time),getString(R.string.unit_kVoltAmp));
 				}
 			} );
 		}
@@ -126,9 +124,6 @@ public class HEmet_inst_meter extends Activity {
 				SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, // Y_VALS_ONLY means use the element index as the x value
 				tit);                             		// Set the display title of the series "Voltage"
 
-		// same as above
-		//XYSeries series2 = new SimpleXYSeries(Arrays.asList(series2Numbers), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Current");
-
 
 		// Create a formatter to use for drawing a series using LineAndPointRenderer:
 		LineAndPointFormatter series1Format = new LineAndPointFormatter(
@@ -140,9 +135,7 @@ public class HEmet_inst_meter extends Activity {
 		// add a new series' to the xyplot:
 		mySimpleXYPlot.addSeries(series1, series1Format);
 
-		// same as above:
-		//mySimpleXYPlot.addSeries(series2,	new LineAndPointFormatter(Color.rgb(0, 0, 200), Color.rgb(0, 0, 100), null));
-
+		
 		// reduce the number of range labels
 		mySimpleXYPlot.setTicksPerRangeLabel(2);
 		mySimpleXYPlot.setTicksPerDomainLabel(1);
@@ -164,7 +157,7 @@ public class HEmet_inst_meter extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.hemet_inst_meter, menu);
+		getMenuInflater().inflate(R.menu.hemet_inst_power, menu);
 		return true;
 	}
 

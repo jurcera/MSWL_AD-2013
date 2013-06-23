@@ -3,33 +3,122 @@
 
     <string name="app_name">HEmet</string>
     <string name="action_settings">Settings</string>
-    
     <string name="imglogo">Logo</string>
+
+    <!-- MainActivity -->
     <string name="tvconnect">Home Energy Meter</string>
     <string name="butconnect">Conectar &#8230;</string>
-    
-    <string name="head_inst_met">Instantaneous Parameters (RMS)</string>
-    <string name="title_volt1">Voltage (V)</string>
+
+    <!-- HEmet_menu -->
+    <string name="head_label_menu"> Instantaneous Parameters</string>
+    <string name="bt_inst_basic"> Basic Parameters </string>
+    <string name="bt_inst_power"> Power Parameters </string>
+    <string name="head_label_hist_basic"> Historic Basic Parameters</string>
+    <string name="bt_hist_volt"> Voltage </string>
+    <string name="bt_hist_curr"> Current </string>
+    <string name="bt_hist_freq"> Frequency </string>
+    <string name="head_label_hist_power"> Historic Power Parameters</string>
+    <string name="bt_hist_pact"> Active Power </string>
+    <string name="bt_hist_prea"> Reactive Power </string>
+    <string name="bt_hist_papp"> Apparent Power </string>
+    <string name="head_label_hist_energy"> Historic Energy Parameters</string>
+    <string name="bt_hist_eact"> Active Energy </string>
+    <string name="bt_hist_erea"> Reactive Energy </string>
+    <string name="bt_hist_eapp"> Apparent Energy </string>
+    <string name="head_label_hist_cost">Historic Energy Cost</string>
+    <string name="bt_hist_cost"> Energy Cost </string>
+
+    <!-- HEmet_inst_meter -->
+    <string name="head_inst_met"> Instantaneous Basic Parameters (RMS)</string>
+    <string name="title_volt1">Voltage [V]</string>
     <string name="value_volt1">232.8</string>
-    <string name="title_curr1">Current (A)</string>
+    <string name="title_curr1">Current [A]</string>
     <string name="value_curr1">12.50</string>
-    <string name="title_freq1">Frequency (Hz)</string>
+    <string name="title_freq1">Frequency [Hz]</string>
     <string name="value_freq1">49.98</string>
-    
-    <string name="head_inst_graphs">Instantaneous Graphs</string>
-    <string name="bt_volt">Voltage</string>
-    <string name="bt_curr">Current</string>
-    <string name="bt_freq">Frequency</string>
-    
+    <string name="head_inst_graphs"> Instantaneous Basic Graphs</string>
+    <string name="bt_volt">  Voltage  </string>
+    <string name="bt_curr"> Current </string>
+    <string name="bt_freq">  Frequency  </string>
+
+    <!-- HEmet_inst_power -->
+    <string name="head_inst_power"> Instantaneous Power Parameters</string>
+    <string name="title_pact">Active [kW]</string>
+    <string name="value_pact">10.123</string>
+    <string name="title_prea">Reactive [kVAr]</string>
+    <string name="value_prea">12.501</string>
+    <string name="title_papp">Apparent [kVA]</string>
+    <string name="value_papp">14.980</string>
+    <string name="head_inst_power_graphs"> Instantaneous Power Graphs</string>
+    <string name="bt_pact">  Active  </string>
+    <string name="bt_prea"> Reactive </string>
+    <string name="bt_papp">  Apparent  </string>
+
+    <!-- HEmet_hist_voltage -->
+    <string name="head_hist_voltage"> Historic Volatge</string>
+    <string name="head_hist_voltage_graphs"> Voltage Graphs</string>
+
+    <!-- HEmet_hist_current -->
+    <string name="head_hist_current"> Historic Current </string>
+    <string name="head_hist_current_graphs"> Current Graphs</string>
+
+    <!-- HEmet_hist_frequency -->
+    <string name="head_hist_frequency"> Historic Frequency </string>
+    <string name="head_hist_frequency_graphs"> Frequency Graphs</string>
+
+    <!-- HEmet_hist_pact -->
+    <string name="head_hist_pact"> Historic Active Power</string>
+    <string name="head_hist_pact_graphs"> Active Power Graphs</string>
+
+    <!-- HEmet_hist_prea -->
+    <string name="head_hist_prea"> Historic Reactive Power </string>
+    <string name="head_hist_prea_graphs"> Reactive Power Graphs</string>
+
+    <!-- HEmet_hist_papp -->
+    <string name="head_hist_papp"> Historic Apparent Power </string>
+    <string name="head_hist_papp_graphs"> Apparent Power Graphs</string>
+
+    <!-- HEmet_hist_eact -->
+    <string name="head_hist_eact"> Historic Active Energy</string>
+    <string name="head_hist_eact_graphs"> Active Energy Graphs</string>
+
+    <!-- HEmet_hist_erea -->
+    <string name="head_hist_erea"> Historic Reactive Energy </string>
+    <string name="head_hist_erea_graphs"> Reactive Energy Graphs</string>
+
+    <!-- HEmet_hist_eapp -->
+    <string name="head_hist_eapp"> Historic Apparent Energy </string>
+    <string name="head_hist_eapp_graphs"> Apparent Energy Graphs</string>
+
+    <!-- HEmet_hist_cost -->
+    <string name="head_hist_cost"> Historic Energy Cost </string>
+    <string name="head_hist_cost_graphs"> Energy Cost Graphs</string>
+
+    <!-- Graphs -->
     <string name="label_time">Time</string>
-    
     <string name="unit_volt">[ V ]</string>
     <string name="unit_ampere">[ A ]</string>
-    <string name="unit_hertz">[Hz]</string>
+    <string name="unit_hertz">[ Hz ]</string>
     <string name="unit_kWat">[ kW ]</string>
     <string name="unit_kVoltAmp">[ kVA ]</string>
     <string name="unit_kVoltAmpReact">[ kVAr ]</string>
-    
-    
+    <string name="unit_kWath">[ kWh ]</string>
+    <string name="unit_kVoltAmph">[ kVAh ]</string>
+    <string name="unit_kVoltAmpReacth">[ kVArh ]</string>
+    <string name="unit_euro"> [ € ] </string>
+    <string name="label_dayly"> Dayly </string>
+    <string name="label_weekly"> Weekly </string>
+    <string name="label_monthly"> Monthly </string>
+    <string name="label_yearly"> Yearly </string>
+    <string name="label_volt"> Voltage </string>
+    <string name="label_curr"> Current </string>
+    <string name="label_freq"> Frequency </string>
+    <string name="label_pow"> Power </string>
+    <string name="label_ener"> Energy </string>
+    <string name="label_act"> Active </string>
+    <string name="label_react"> Reactive </string>
+    <string name="label_app"> Apparent </string>
+    <string name="label_cost"> Cost </string>
+
 
 </resources>

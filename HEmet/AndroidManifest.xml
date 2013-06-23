@@ -8,9 +8,12 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="10" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -18,11 +21,60 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name="com.urcera.hemet.HEmet_menu"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name="com.urcera.hemet.HEmet_inst_meter"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_inst_power"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_voltage"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_current"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_frequency"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_pact"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_eact"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_prea"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_erea"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_papp"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_eapp"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.urcera.hemet.HEmet_hist_cost"
             android:label="@string/app_name" >
         </activity>
     </application>
