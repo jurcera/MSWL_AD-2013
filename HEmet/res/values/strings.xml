@@ -119,6 +119,10 @@
     <string name="label_react"> Reactive </string>
     <string name="label_app"> Apparent </string>
     <string name="label_cost"> Cost </string>
+    
+    <!-- Preferences -->
+    <string name="PricekWh_title">kWh Price</string>
+    <string name="PricekWh_summary">Put here kWh price</string>
 
 
 </resources>

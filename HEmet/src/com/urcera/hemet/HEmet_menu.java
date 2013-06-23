@@ -20,15 +20,17 @@
 
 package com.urcera.hemet;
 
-import android.os.Bundle;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class HEmet_menu extends Activity {
 
@@ -36,6 +38,14 @@ public class HEmet_menu extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hemet_menu);
+		
+		// Date format
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat now = new SimpleDateFormat("yyyyMMddHHmmss");
+		String dateNow = now.format(c.getTime());
+		
+		//Log.d("FECHA", dateNow);
+		
 		
 		Button bt1 = (Button) this.findViewById(R.id.btInstBasic);	// Assign button butBusqueda to bt1
 		if (bt1 != null)										
@@ -241,13 +251,7 @@ public class HEmet_menu extends Activity {
 			} );
 		}
 		
-		
-		
-		
-		
-		
-		
-		
+			
 		
 	}
 

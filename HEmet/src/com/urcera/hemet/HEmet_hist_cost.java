@@ -16,8 +16,7 @@
  *
  *  Author : Jesus Urcera Lopez <jurcera at gmail dot com>
  *
-*/
-
+ */
 
 package com.urcera.hemet;
 
@@ -40,15 +39,19 @@ import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 import com.androidplot.xy.XYStepMode;
 
+
 public class HEmet_hist_cost extends Activity {
 	
 	private XYPlot mySimpleXYPlot;
-	private double kWhPrice = 0.150938;  // €/kWh -- 15/05/2013
+	private double kWhPrice = 0;   // 0.150938 €/kWh -- 15/05/2013
+	
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hemet_hist_cost);
+		
+		kWhPrice = Double.valueOf(Prefs.getPricekWh(getBaseContext()));	// Read the price of kWh from preferences
 		
 		// initialize our XYPlot reference:
 		mySimpleXYPlot = (XYPlot) findViewById(R.id.mySimpleXYPlotHistCost);
@@ -66,8 +69,7 @@ public class HEmet_hist_cost extends Activity {
 				public void onClick(View v) {					// Llama a actividad1 al pulsar boton1
 
 					Number[] dayValues = {0.20, 0.50, 0.90, 1.02, 1.50, 1.69, 1.90, 2.26, 2.59, 3.98, 5.87, 9.89, 11.98, 13.02, 16.09, 17.98, 18.98, 22.00, 24.00, 27.08, 29.09, 33.00, 34.12, 34.69};
-					//Number[] dayValues = {0.00, 0.50, 1.00, 1.50, 2.34};
-					
+										
 					//Double[] suso34 = new Double[dayValues.length];
 					//suso34[1] = dayValues[1].doubleValue();
 					//Math.floor(x * 100) / 100
@@ -167,7 +169,7 @@ public class HEmet_hist_cost extends Activity {
 				Color.rgb(0, 200, 0),                   // line color
 				Color.rgb(0, 100, 0),                   // point color
 				null,
-				new PointLabelFormatter(Color.WHITE));                                  // fill color (none)
+				new PointLabelFormatter(Color.WHITE));  // fill color (none)
 
 		// add a new series' to the xyplot:
 		mySimpleXYPlot.addSeries(series1, series1Format);
@@ -184,8 +186,7 @@ public class HEmet_hist_cost extends Activity {
 
 		// get rid of the decimal place on the display:
 		mySimpleXYPlot.setDomainValueFormat(new DecimalFormat("#"));
-		
-		
+				
 		mySimpleXYPlot.redraw();
 
 	}

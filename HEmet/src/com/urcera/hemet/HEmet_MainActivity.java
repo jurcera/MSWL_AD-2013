@@ -25,6 +25,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -101,6 +102,17 @@ public class HEmet_MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.hemet__main, menu);
 		return true;
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		//return super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			startActivity(new Intent(this, Prefs.class));
+			return true;
+		}
+		return false;
 	}
 
 }
